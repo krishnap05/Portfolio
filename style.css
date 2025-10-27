@@ -109,8 +109,8 @@ header, section, .project-card {
 }
 .hero-sub { color: #ffb6e0; margin-top: 6px; }
 
-.hero h1 { font-size: 3.6rem; margin: 6px 0 8px 0; color: #fff; }
-.hero-intro { max-width: 700px; margin: 8px auto 14px auto; color: rgba(234,230,239,0.86); font-size:1.05rem; }
+.hero h1 { font-size: clamp(2.6rem, 8.5vw, 7.2rem); margin: 6px 0 12px 0; color: #fff; line-height: 1; }
+.hero-intro { max-width: 900px; margin: 18px auto 14px auto; color: rgba(234,230,239,0.86); font-size: clamp(1rem, 1.9vw, 1.6rem); }
 .cta { display:inline-block; margin-top:8px; background:#8a69a8; color:#fff; padding:10px 16px; border-radius:10px; text-decoration:none; font-weight:700; }
 .cta:hover { transform: translateY(-3px); }
 
@@ -128,7 +128,7 @@ header, section, .project-card {
 .hero-dark .hero-intro.small { margin-top:8px; opacity:0.92; }
 
 .hero-bg { position: absolute; inset: 0; width: 120%; height: 120%; transform-origin: center; z-index: 0; pointer-events: none; }
-.hero-bg .hero-path { stroke-linecap: round; opacity: 0.95; }
+.hero-bg .hero-path { stroke-linecap: round; opacity: 0.95; stroke-dasharray: 1000; animation: strokeMove 12s linear infinite; }
 
 /* slow float animation */
 @keyframes heroFloat {
@@ -136,7 +136,11 @@ header, section, .project-card {
   50% { transform: translateX(-18px) translateY(-6px) rotate(-2deg); }
   100% { transform: translateX(0) translateY(0) rotate(0deg); }
 }
-.hero-bg { animation: heroFloat 14s ease-in-out infinite; }
+.hero-bg { animation: heroFloat 9s ease-in-out infinite; }
+
+@keyframes strokeMove {
+  to { stroke-dashoffset: -1000; }
+}
 
 /* scroll arrow */
 .scroll-arrow { position: absolute; bottom: 18px; display:flex; align-items:center; justify-content:center; width:48px; height:48px; border-radius:24px; background: rgba(255,255,255,0.06); color: #fff; text-decoration:none; z-index:6; }
