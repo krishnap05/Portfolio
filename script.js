@@ -25,15 +25,28 @@ document.addEventListener("DOMContentLoaded", () => {
       const target = document.querySelector(link.getAttribute('href'));
       if (!target) return;
       target.scrollIntoView({behavior: 'smooth', block: 'start'});
+      // set active immediately on click
+      navLinks.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
       // close mobile nav if open
       document.querySelector('.nav-links')?.classList.remove('open');
     });
   });
 
-  // Highlight active nav link on scroll
+  // Highlight active nav link on scroll (improved)
   const sectionsForNav = Array.from(document.querySelectorAll('section[id]'));
-  window.addEventListener('scroll', () => {
-    const scrollPos = window.scrollY + 120; // account for fixed nav
+  function updateActiveLinkOnScroll() {
+    const scrollPos = window.scrollY + 140; // account for fixed nav
+    const docBottom = document.documentElement.scrollHeight - window.innerHeight;
+
+    // If near bottom, mark last section as active
+    if (window.scrollY >= docBottom - 40) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const last = navLinks[navLinks.length - 1];
+      last?.classList.add('active');
+      return;
+    }
+
     for (const sec of sectionsForNav) {
       const top = sec.offsetTop;
       const bottom = top + sec.offsetHeight;
@@ -46,7 +59,10 @@ document.addEventListener("DOMContentLoaded", () => {
         link.classList.remove('active');
       }
     }
-  }, {passive: true});
+  }
+  window.addEventListener('scroll', updateActiveLinkOnScroll, {passive: true});
+  // call once to set initial state
+  updateActiveLinkOnScroll();
 
   // Mobile menu toggle
   const toggle = document.querySelector('.nav-toggle');
@@ -85,6 +101,24 @@ document.addEventListener("DOMContentLoaded", () => {
     const offset = window.scrollY * 0.06;
     hero.style.transform = `translateY(${offset}px)`;
   });
+
+  // Timezone display for St. John's, Newfoundland (America/St_Johns)
+  function updateNewfoundlandTime() {
+    const el = document.querySelector('#timezone .tz-clock');
+    if (!el) return;
+    try {
+      const now = new Date();
+      const opts = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false, timeZone: 'America/St_Johns' };
+      const fmt = new Intl.DateTimeFormat([], opts);
+      el.textContent = fmt.format(now);
+    } catch (e) {
+      // fallback: display UTC offset approx
+      const now = new Date();
+      el.textContent = now.toLocaleTimeString();
+    }
+  }
+  setInterval(updateNewfoundlandTime, 1000);
+  updateNewfoundlandTime();
 
   // Typewriter effect for hero name
   (function typewriter() {

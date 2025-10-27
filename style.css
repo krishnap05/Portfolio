@@ -281,3 +281,72 @@ a {
 a:hover {
   color: #7A4988;
 }
+
+/* Split screen layout */
+.split-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 22px;
+  align-items: start;
+  margin-top: 20px;
+  position: relative;
+  z-index: 2;
+}
+.left-col { padding-right: 6px; }
+.right-col { position: relative; }
+
+.project-links { display:flex; gap:10px; margin-top:12px; }
+.btn {
+  display: inline-block;
+  background: #5D3A6A;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+}
+.btn.ghost { background: transparent; color: #5D3A6A; border: 2px solid rgba(93,58,106,0.08); }
+.btn:hover { transform: translateY(-2px); }
+
+/* Timezone card on right column */
+.timezone-card {
+  background: linear-gradient(180deg, rgba(255,250,240,0.98), rgba(255,245,235,0.85));
+  padding: 14px;
+  margin: 18px 0;
+  border-radius: 12px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+  color: #5D3A6A;
+}
+.timezone-card .tz-clock { font-size: 1.6em; font-weight:700; margin-top:6px; }
+.timezone-card .tz-location { font-weight:700; }
+.timezone-card .tz-note { color: #7A4988; font-size:0.9em; }
+
+/* Robot */
+.robot-wrapper { display:flex; justify-content:center; padding: 8px 0 18px 0; }
+.robot { width:120px; height:140px; transform-origin: 60px 70px; animation: robot-bob 4s ease-in-out infinite; cursor: default; }
+.robot svg { display:block; }
+.robot .eye { transform-origin: center; animation: eye-blink 3s infinite; }
+
+@keyframes robot-bob {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(-1deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+@keyframes eye-blink {
+  0%, 85% { transform: scaleY(1); }
+  88% { transform: scaleY(0.12); }
+  92% { transform: scaleY(1); }
+  100% { transform: scaleY(1); }
+}
+
+/* Ensure nav links are easily clickable */
+.nav-links a { display: inline-block; padding: 8px 10px; }
+
+/* Responsive: stack columns on narrower screens */
+@media (max-width: 920px) {
+  .split-grid { grid-template-columns: 1fr; }
+  .right-col { order: 2; }
+  .left-col { order: 1; }
+  .robot-wrapper { justify-content: flex-end; }
+}
+

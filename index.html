@@ -32,14 +32,14 @@
     <p class="hero-sub">Data analytics • Machine learning • Dashboards</p>
   </header>
 
-  <script src="script.js"></script>
-
-  <section id="about-me">
+  <main class="split-grid">
+    <div class="left-col">
+      <section id="about-me">
     <h2>About Me</h2>
     <p>I’m Krishna Pandya, a third-year Computer Science student at Memorial University of Newfoundland with a strong passion for data analytics and data engineering. I enjoy transforming raw data into meaningful insights and building scalable solutions that drive decision-making. My academic journey and hands-on projects have equipped me with a solid foundation in data pipelines, machine learning, and interactive dashboard development. I’m always eager to explore new technologies and apply them to solve real-world problems.</p>
   </section>
 
-  <section id="skills">
+      <section id="skills">
     <h2>Skills</h2>
     <ul>
       <li><strong>Programming & Tools:</strong> Python, SQL, Git, Streamlit</li>
@@ -48,6 +48,64 @@
       <li><strong>Soft Skills:</strong> Problem-solving, communication, teamwork, adaptability</li>
     </ul>
   </section>
+    </div>
+
+    <aside class="right-col">
+      <section id="projects">
+        <h2>My Projects</h2>
+        <div class="project-card">
+            <h3>Churn Prediction Dashboard</h3>
+            <p>
+            An interactive dashboard built with Streamlit and XGBoost to predict customer churn. This project leverages Python, Pandas, NumPy, Scikit-learn, XGBoost, and Streamlit for model training and deployment, with Matplotlib and Seaborn for visualization.
+            </p>
+            <div class="project-links">
+              <a class="btn" href="churn-project.html" target="_blank">Project Overview</a>
+              <a class="btn ghost" href="https://github.com/krishnap05/churn-prediction-dashboard" target="_blank">GitHub Repo</a>
+            </div>
+        </div>
+      </section>
+
+      <div id="timezone" class="timezone-card">
+        <h3>Time Zone</h3>
+        <p class="tz-location">St. John's, Newfoundland</p>
+        <p class="tz-clock">--:--:--</p>
+        <p class="tz-note">(Local time)</p>
+      </div>
+
+      <section id="contact">
+        <h2>Contact Me</h2>
+        <p>If you'd like to connect or collaborate, feel free to reach out:</p>
+        <p>Email: <a href="mailto:krishnapandya510@gmail.com">krishnapandya510@gmail.com</a></p>
+      </section>
+
+      <!-- decorative/interactive robot -->
+      <div class="robot-wrapper" aria-hidden="false">
+        <div class="robot" title="Hi!">
+          <!-- simple SVG robot with animated eyes -->
+          <svg viewBox="0 0 120 140" width="120" height="140" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="rgrad" x1="0" x2="1">
+                <stop offset="0" stop-color="#fff" stop-opacity="0.95"/>
+                <stop offset="1" stop-color="#e6e6ff" stop-opacity="0.95"/>
+              </linearGradient>
+            </defs>
+            <rect x="10" y="22" rx="12" ry="12" width="100" height="96" fill="url(#rgrad)" stroke="#b8a3d6" stroke-width="2"/>
+            <rect x="44" y="8" width="32" height="14" rx="4" fill="#b8a3d6"/>
+            <circle class="eye left" cx="40" cy="62" r="8" fill="#2f2440"/>
+            <circle class="eye right" cx="80" cy="62" r="8" fill="#2f2440"/>
+            <rect x="44" y="86" width="32" height="8" rx="3" fill="#2f2440" opacity="0.12"/>
+            <g class="antenna">
+              <rect x="58" y="0" width="4" height="10" rx="2" fill="#b8a3d6"/>
+              <circle cx="60" cy="-2" r="3" fill="#ffd5ea"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+    </aside>
+  </main>
+
+  <script src="script.js"></script>
 
   <section id="contact">
     <h2>Contact Me</h2>
