@@ -109,7 +109,7 @@ header, section, .project-card {
 }
 .hero-sub { color: #ffb6e0; margin-top: 6px; }
 
-.hero h1 { font-size: clamp(3rem, 11vw, 9.6rem); margin: 6px 0 12px 0; color: #fff; line-height: 1; }
+.hero h1 { margin: 6px 0 12px 0; color: #fff; line-height: 1; font-weight: 800; }
 .hero-intro { max-width: 1100px; margin: 22px auto 14px auto; color: rgba(234,230,239,0.86); font-size: clamp(1.05rem, 2.1vw, 1.9rem); }
 .cta { display:inline-block; margin-top:8px; background:#8a69a8; color:#fff; padding:10px 16px; border-radius:10px; text-decoration:none; font-weight:700; }
 .cta:hover { transform: translateY(-3px); }
@@ -121,10 +121,69 @@ header, section, .project-card {
   position: relative;
   overflow: hidden;
 }
-.hero-dark h1 { color: #fff; font-size: 3.8rem; letter-spacing: -0.6px; }
+.hero-dark h1 { color: #fff; letter-spacing: -0.6px; }
 .hero-dark .accent { color: #ff6fb6; font-weight: 800; margin-right:6px; }
+
+/* Split hero headline: larger first line, slightly smaller name below */
+.hero h1 .hi {
+  display: block;
+  color: #ff6fb6;
+  font-weight: 900;
+  line-height: 0.9;
+  margin: 0;
+  /* large but responsive: grows on wide viewports, clamps for very small/very large */
+  font-size: clamp(5.2rem, 20vw, 12.6rem);
+  letter-spacing: -1px;
+}
+.hero h1 .name {
+  display: block;
+  color: #ffffff;
+  font-weight: 900;
+  line-height: 0.92;
+  margin-top: 6px;
+  /* slightly reduced size compared to before (one step down) */
+  font-size: clamp(3.0rem, 10.5vw, 7.6rem);
+}
+
+/* Slight adjustment on very small screens so text doesn't overflow */
+@media (max-width: 520px) {
+  .hero h1 .hi { font-size: clamp(3.6rem, 18vw, 8.8rem); }
+  .hero h1 .name { font-size: clamp(2.2rem, 9.5vw, 4.6rem); }
+}
+
+/* Character-by-character reveal */
+.char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(18px) scaleY(0.995);
+  will-change: transform, opacity;
+}
+.char.animate {
+  animation: charIn 520ms cubic-bezier(.2,.9,.23,1) forwards;
+}
+@keyframes charIn {
+  0% { opacity: 0; transform: translateY(18px) scaleY(0.995); }
+  60% { opacity: 1; transform: translateY(-4px) scaleY(1.01); }
+  100% { opacity: 1; transform: translateY(0) scaleY(1); }
+}
+
+/* Subtle glow/shimmer on the accent 'Hi' */
+.hi {
+  animation: hiGlow 3.6s ease-in-out infinite;
+}
+@keyframes hiGlow {
+  0% { text-shadow: 0 0 0 rgba(255,111,182,0); }
+  50% { text-shadow: 0 14px 34px rgba(255,111,182,0.06); }
+  100% { text-shadow: 0 0 0 rgba(255,111,182,0); }
+}
+
+/* Fade-in helpers for intro lines after headline finishes */
+.hero .reveal { opacity: 0; transform: translateY(12px); transition: opacity 520ms ease, transform 520ms ease; }
+.hero .reveal.show { opacity: 1; transform: translateY(0); }
 .hero-dark .hero-sub { color: #ffb6e0; margin-top:6px; opacity:0.9; }
-.hero-dark .hero-intro { max-width: 900px; color: rgba(255,255,255,0.86); margin-top:18px; font-size:1.02rem; }
+.hero-dark .hero-intro { max-width: 900px; color: rgba(255,255,255,0.86); margin-top:18px; /* increased by ~2 sizes for emphasis */
+  font-size: clamp(1.4rem, 2.4vw, 2.2rem);
+}
 .hero-dark .hero-intro.small { margin-top:8px; opacity:0.92; }
 
 .hero-bg { position: absolute; inset: 0; width: 120%; height: 120%; transform-origin: center; z-index: 0; pointer-events: none; }
@@ -362,7 +421,7 @@ a:hover {
 /* Split screen layout */
 .split-grid {
   display: grid;
-  grid-template-columns: 60% 40%; /* slightly larger left column for About */
+  grid-template-columns: 60% 40%; /* default: slightly larger left column for About/Projects */
   gap: 28px;
   align-items: start;
   margin-top: 20px;
@@ -371,6 +430,10 @@ a:hover {
 }
 .left-col { padding-right: 6px; }
 .right-col { position: relative; }
+
+/* utility split modifiers */
+.split-equal { grid-template-columns: 1fr 1fr; }
+.split-60-40 { grid-template-columns: 60% 40%; }
 
 .project-links { display:flex; gap:10px; margin-top:12px; }
 .btn {
@@ -383,6 +446,15 @@ a:hover {
   font-weight: 700;
 }
 .projects-hero { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); margin-bottom: 18px; object-fit: cover; }
+
+/* Contact buttons row */
+.contact-buttons { display:flex; gap:12px; align-items:center; margin-top:10px; }
+.contact-buttons .btn { display:inline-flex; gap:10px; align-items:center; padding:10px 14px; }
+.contact-buttons .btn .icon { opacity: 0.95; }
+/* vertical variant: stack buttons (used to place LinkedIn under GitHub) */
+.contact-buttons.vertical { flex-direction: column; align-items: flex-start; }
+.contact-buttons.vertical .btn { min-width: 220px; }
+.btn.ghost { background: transparent; color: #5D3A6A; border: 2px solid rgba(93,58,106,0.08); }
 
 /* Section headers */
 section h2 {

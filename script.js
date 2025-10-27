@@ -161,11 +161,55 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(step, 400);
   })();
 
+  // Character-wrapping and staggered reveal for hero headline
+  (function headlineReveal(){
+    function wrapAndAnimate(selector, initialDelay = 0, perChar = 0.04) {
+      const el = document.querySelector(selector);
+      if (!el) return 0;
+      const text = el.textContent.trim();
+      // preserve whitespace between words but remove excess
+      el.textContent = '';
+      let total = 0;
+      [...text].forEach((ch, i) => {
+        const span = document.createElement('span');
+        span.className = 'char';
+        // preserve visible spacing by using a non-breaking space for regular spaces
+        if (ch === ' ') {
+          span.innerHTML = '&nbsp;';
+        } else {
+          span.textContent = ch;
+        }
+        // small delay for spaces to avoid visual gaps
+        const delay = initialDelay + (i * perChar);
+        span.style.animationDelay = delay + 's';
+        el.appendChild(span);
+        total = delay;
+      });
+      // force reflow then add animate class
+      requestAnimationFrame(() => {
+        el.querySelectorAll('.char').forEach(s => s.classList.add('animate'));
+      });
+      return total + 0.55; // approximate end time
+    }
+
+    const hiDone = wrapAndAnimate('.hero h1 .hi', 0.06, 0.05);
+    const nameDone = wrapAndAnimate('.hero h1 .name', 0.12 + hiDone, 0.035);
+
+    // reveal intro lines after headline animation completes
+    const revealAfter = Math.max(hiDone, nameDone) + 0.12;
+    setTimeout(() => {
+      document.querySelectorAll('.hero .reveal').forEach(el => el.classList.add('show'));
+    }, revealAfter * 1000);
+  })();
+
   
-  const robotEl = document.querySelector('.robot');
-  robotEl?.addEventListener('click', () => {
-    const contact = document.querySelector('#contact');
-    if (contact) contact.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // Make the hero arrow scroll smoothly to the About section
+  const scrollArrow = document.querySelector('.scroll-arrow');
+  scrollArrow?.addEventListener('click', (e) => {
+    e.preventDefault();
+    const href = scrollArrow.getAttribute('href');
+    const target = document.querySelector(href);
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 
   // subtle hero background parallax (mouse move)
