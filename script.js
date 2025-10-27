@@ -147,4 +147,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const contact = document.querySelector('#contact');
     if (contact) contact.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
+
+  // subtle hero background parallax (mouse move)
+  (function heroParallax() {
+    const hero = document.querySelector('.hero-dark');
+    const bg = document.querySelector('.hero-bg');
+    if (!hero || !bg) return;
+    let raf = null;
+    const state = { x: 0, y: 0 };
+    hero.addEventListener('mousemove', (e) => {
+      const rect = hero.getBoundingClientRect();
+      const px = (e.clientX - rect.left) / rect.width - 0.5; // -0.5 -> 0.5
+      const py = (e.clientY - rect.top) / rect.height - 0.5;
+      state.x = px * 18; state.y = py * 10;
+      if (raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        bg.style.transform = `translate3d(${state.x}px, ${state.y}px, 0) rotate(${state.x * 0.03}deg)`;
+      });
+    });
+    hero.addEventListener('mouseleave', () => {
+      if (raf) cancelAnimationFrame(raf);
+      bg.style.transform = '';
+    });
+  })();
 });

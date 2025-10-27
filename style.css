@@ -133,6 +133,40 @@ header, section, .project-card {
 .cta { display:inline-block; margin-top:8px; background:#4B3B6B; color:#fff; padding:10px 16px; border-radius:10px; text-decoration:none; font-weight:700; }
 .cta:hover { transform: translateY(-3px); }
 
+/* Dark hero variant with animated background */
+.hero-dark {
+  background: linear-gradient(180deg,#0b0810,#0f0b16);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.hero-dark h1 { color: #fff; font-size: 3.8rem; letter-spacing: -0.6px; }
+.hero-dark .accent { color: #ff6fb6; font-weight: 800; margin-right:6px; }
+.hero-dark .hero-sub { color: #ffb6e0; margin-top:6px; opacity:0.9; }
+.hero-dark .hero-intro { max-width: 900px; color: rgba(255,255,255,0.86); margin-top:18px; font-size:1.02rem; }
+.hero-dark .hero-intro.small { margin-top:8px; opacity:0.92; }
+
+.hero-bg { position: absolute; inset: 0; width: 120%; height: 120%; transform-origin: center; z-index: 0; pointer-events: none; }
+.hero-bg .hero-path { stroke-linecap: round; opacity: 0.95; }
+
+/* slow float animation */
+@keyframes heroFloat {
+  0% { transform: translateX(0) translateY(0) rotate(0deg); }
+  50% { transform: translateX(-18px) translateY(-6px) rotate(-2deg); }
+  100% { transform: translateX(0) translateY(0) rotate(0deg); }
+}
+.hero-bg { animation: heroFloat 14s ease-in-out infinite; }
+
+/* scroll arrow */
+.scroll-arrow { position: absolute; bottom: 18px; display:flex; align-items:center; justify-content:center; width:48px; height:48px; border-radius:24px; background: rgba(255,255,255,0.06); color: #fff; text-decoration:none; z-index:6; }
+.scroll-arrow svg { transform: translateY(0); transition: transform .2s ease; }
+.scroll-arrow:hover { background: rgba(255,255,255,0.09); }
+@keyframes chevron-bob { 0%{transform: translateY(0);}50%{transform: translateY(6px);}100%{transform: translateY(0);} }
+.scroll-arrow svg { animation: chevron-bob 1.6s infinite ease-in-out; }
+
+/* ensure hero content sits above background */
+.hero-dark > h1, .hero-dark > p, .hero-dark .cta { position: relative; z-index: 5; }
+
 /* Full-screen hero/home section */
 .hero-page {
   min-height: 100vh;
