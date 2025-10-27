@@ -84,4 +84,25 @@ document.addEventListener("DOMContentLoaded", () => {
     const offset = window.scrollY * 0.06;
     hero.style.transform = `translateY(${offset}px)`;
   });
+
+  // Typewriter effect for hero name
+  (function typewriter() {
+    const el = document.querySelector('#typed-name');
+    if (!el) return;
+    const text = el.dataset.text || el.textContent || '';
+    el.textContent = '';
+    let i = 0;
+    const speed = 80;
+    function step() {
+      if (i <= text.length) {
+        el.textContent = text.slice(0, i);
+        i++;
+        setTimeout(step, speed);
+      } else {
+        // blink cursor for a short while
+        setTimeout(() => { el.style.borderRight = '0px solid transparent'; }, 900);
+      }
+    }
+    setTimeout(step, 400);
+  })();
 });

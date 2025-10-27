@@ -6,6 +6,70 @@ body {
   padding: 20px;
 }
 
+/* Animated background blobs (decorative) */
+.animated-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(48px);
+  opacity: 0.55;
+  transform: translate3d(0,0,0);
+}
+.blob1 { width: 420px; height: 420px; background: radial-gradient(circle at 30% 30%, #f6a5d9, #f8d5e5); left: -8%; top: -6%; animation: float1 12s infinite linear; }
+.blob2 { width: 480px; height: 480px; background: radial-gradient(circle at 60% 40%, #a9c7ff, #b3e0ff); right: -10%; top: 6%; animation: float2 18s infinite linear; }
+.blob3 { width: 600px; height: 600px; background: radial-gradient(circle at 40% 60%, #d1a6ff, #ffe6ff); left: 20%; bottom: -20%; animation: float3 22s infinite linear; }
+
+@keyframes float1 {
+  0% { transform: translateY(0) translateX(0) scale(1); }
+  50% { transform: translateY(28px) translateX(18px) scale(1.02); }
+  100% { transform: translateY(0) translateX(0) scale(1); }
+}
+@keyframes float2 {
+  0% { transform: translateY(0) translateX(0) scale(1); }
+  50% { transform: translateY(-36px) translateX(-22px) scale(1.03); }
+  100% { transform: translateY(0) translateX(0) scale(1); }
+}
+@keyframes float3 {
+  0% { transform: translateY(0) translateX(0) scale(1); }
+  50% { transform: translateY(40px) translateX(-12px) scale(0.98); }
+  100% { transform: translateY(0) translateX(0) scale(1); }
+}
+
+/* Make content appear above blobs */
+header, section, .project-card {
+  position: relative;
+  z-index: 2;
+}
+
+/* hero typed name styling */
+#typed-name { display:inline-block; color:#4B3B6B; border-right: 2px solid rgba(75,59,107,0.9); padding-right:6px; white-space:nowrap; }
+
+/* shimmer on project cards */
+.project-card { overflow: hidden; }
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: -40%; left: -30%;
+  width: 60%; height: 180%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.0) 0%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0.0) 100%);
+  transform: rotate(-18deg);
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+.project-card:hover::before { transform: translateX(120%) rotate(-18deg); opacity: 1; }
+
+/* reduce intensity on small screens */
+@media (max-width: 720px) {
+  .blob { filter: blur(38px); opacity: 0.45; }
+}
+
 /* Navigation */
 .site-nav {
   position: fixed;
