@@ -144,6 +144,18 @@ header, section, .project-card {
   text-align: center;
 }
 
+/* Scroll snapping: make hero snap to viewport and details follow */
+html, body {
+  height: 100%;
+}
+body {
+  scroll-snap-type: y mandatory;
+  overflow-y: auto;
+}
+section, .hero-page {
+  scroll-snap-align: start;
+}
+
 
 header {
   text-align: center;
