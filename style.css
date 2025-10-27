@@ -166,6 +166,11 @@ header, section, .project-card {
 .hero-bg .hero-path:nth-of-type(15) { transform: translateY(56px); }
 .hero-bg .hero-path:nth-of-type(16) { transform: translateY(60px); }
 
+/* allow details page background to show and animate */
+.details-page { position: relative; overflow: hidden; }
+.details-page .hero-bg { position: absolute; inset: 0; width: 120%; height: 120%; transform-origin: center; z-index: 0; pointer-events: none; opacity: 0.95; }
+.details-page > main, .details-page .split-grid { position: relative; z-index: 2; }
+
 /* scroll arrow */
 .scroll-arrow { position: absolute; bottom: 18px; display:flex; align-items:center; justify-content:center; width:48px; height:48px; border-radius:24px; background: rgba(255,255,255,0.06); color: #fff; text-decoration:none; z-index:6; }
 .scroll-arrow svg { transform: translateY(0); transition: transform .2s ease; }
