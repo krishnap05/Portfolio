@@ -34,12 +34,18 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Highlight active nav link on scroll (improved)
-  const sectionsForNav = Array.from(document.querySelectorAll('section[id]'));
+  // Map nav links to their target sections (if present)
+  const navItems = Array.from(navLinks).map(l => {
+    const href = l.getAttribute('href');
+    const target = document.querySelector(href);
+    return { link: l, target };
+  });
+
   function updateActiveLinkOnScroll() {
     const scrollPos = window.scrollY + 140; // account for fixed nav
     const docBottom = document.documentElement.scrollHeight - window.innerHeight;
 
-    // If near bottom, mark last section as active
+    // If near bottom, mark last nav link as active
     if (window.scrollY >= docBottom - 40) {
       navLinks.forEach(l => l.classList.remove('active'));
       const last = navLinks[navLinks.length - 1];
@@ -47,17 +53,23 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    for (const sec of sectionsForNav) {
-      const top = sec.offsetTop;
-      const bottom = top + sec.offsetHeight;
-      const id = '#' + sec.id;
-      const link = document.querySelector('.nav-links a[href="' + id + '"]');
-      if (!link) continue;
-      if (scrollPos >= top && scrollPos < bottom) {
-        link.classList.add('active');
-      } else {
-        link.classList.remove('active');
+    // Choose the nav link whose section top is nearest to the scroll position
+    let closest = null;
+    let closestDistance = Infinity;
+    navItems.forEach(item => {
+      if (!item.target) return;
+      const top = item.target.offsetTop;
+      const distance = Math.abs(top - scrollPos);
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closest = item;
       }
+    });
+
+    // Clear all, then set only the closest as active
+    navLinks.forEach(l => l.classList.remove('active'));
+    if (closest && closest.link) {
+      closest.link.classList.add('active');
     }
   }
   window.addEventListener('scroll', updateActiveLinkOnScroll, {passive: true});

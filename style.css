@@ -1,29 +1,14 @@
 
 body {
-  background-color: #ffe5b4; /* pastel peach */
+  background-color: #0b0810; /* dark background */
   font-family: 'Segoe UI', sans-serif;
-  color: #5D3A6A; 
+  color: rgba(234,230,239,0.95);
   padding: 20px;
 }
 
-/* Animated background blobs (decorative) */
-.animated-bg {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
-.blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(48px);
-  opacity: 0.55;
-  transform: translate3d(0,0,0);
-}
-.blob1 { width: 420px; height: 420px; background: radial-gradient(circle at 30% 30%, #ffd5ea, #fff0f6); left: -8%; top: -6%; animation: float1 20s infinite ease-in-out; opacity:0.45; filter: blur(56px); }
-.blob2 { width: 480px; height: 480px; background: radial-gradient(circle at 60% 40%, #d7e9ff, #eef8ff); right: -10%; top: 6%; animation: float2 26s infinite ease-in-out; opacity:0.38; filter: blur(56px); }
-.blob3 { width: 600px; height: 600px; background: radial-gradient(circle at 40% 60%, #e9dbff, #fff5ff); left: 20%; bottom: -20%; animation: float3 30s infinite ease-in-out; opacity:0.4; filter: blur(64px); }
+/* hide old pastel decorative blobs (removed for dark theme) */
+.animated-bg { display: none !important; }
+.blob { display: none !important; }
 
 @keyframes float1 {
   0% { transform: translateY(0) translateX(0) scale(1); }
@@ -83,15 +68,11 @@ header, section, .project-card {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(255,240,219,0.85);
+  background: rgba(255,255,255,0.03);
   padding: 8px 14px;
   border-radius: 10px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-}
-.site-nav .brand {
-  font-weight: 700;
-  color: #5D3A6A;
-  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+  backdrop-filter: blur(6px);
 }
 .nav-links {
   display: flex;
@@ -101,14 +82,14 @@ header, section, .project-card {
   padding: 0;
 }
 .nav-links a {
-  color: #5D3A6A;
+  color: rgba(234,230,239,0.92);
   padding: 6px 10px;
   border-radius: 6px;
 }
 .nav-links a.active,
 .nav-links a:hover {
-  background: #f8d5e5;
-  color: #4B3B6B;
+  background: rgba(255,255,255,0.06);
+  color: #fff;
 }
 .nav-toggle {
   display: none;
@@ -123,14 +104,14 @@ header, section, .project-card {
   text-align: center;
   padding: 28px 16px;
   border-radius: 12px;
-  background: linear-gradient(180deg, rgba(255,240,219,0.9), rgba(255,245,235,0.6));
-  box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+  background: linear-gradient(180deg, rgba(11,8,16,0.85), rgba(11,8,16,0.9));
+  box-shadow: 0 6px 18px rgba(0,0,0,0.45);
 }
-.hero-sub { color: #7A4988; margin-top: 6px; }
+.hero-sub { color: #ffb6e0; margin-top: 6px; }
 
-.hero h1 { font-size: 3.6rem; margin: 6px 0 8px 0; color: #4B3B6B; }
-.hero-intro { max-width: 700px; margin: 8px auto 14px auto; color: #6b4f7a; font-size:1.05rem; }
-.cta { display:inline-block; margin-top:8px; background:#4B3B6B; color:#fff; padding:10px 16px; border-radius:10px; text-decoration:none; font-weight:700; }
+.hero h1 { font-size: 3.6rem; margin: 6px 0 8px 0; color: #fff; }
+.hero-intro { max-width: 700px; margin: 8px auto 14px auto; color: rgba(234,230,239,0.86); font-size:1.05rem; }
+.cta { display:inline-block; margin-top:8px; background:#8a69a8; color:#fff; padding:10px 16px; border-radius:10px; text-decoration:none; font-weight:700; }
 .cta:hover { transform: translateY(-3px); }
 
 /* Dark hero variant with animated background */
@@ -194,9 +175,10 @@ section, .hero-page {
 header {
   text-align: center;
   padding-bottom: 20px;
-  background-color: #fff0db; /* lighter peach */
+  background-color: transparent;
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+  color: rgba(234,230,239,0.95);
 }
 
 header h1 {
@@ -212,13 +194,13 @@ header h1 {
 }
 
 .project-card {
-  background-color: #f8d5e5; /* soft coral pink */
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
   padding: 20px;
   margin: 20px 0;
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.36);
   transition: transform 0.18s ease, box-shadow 0.18s ease;
-  color: #4B3B6B; /* deep muted purple */
+  color: rgba(234,230,239,0.95);
 }
 
 .project-card:hover {
@@ -245,13 +227,13 @@ main, section { scroll-margin-top: 96px; }
 
 
 section {
-  background-color: #fff0db; /* light peach */
+  background-color: rgba(18,14,20,0.45); /* translucent dark */
   padding: 20px;
   margin: 20px 0;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.35);
   transition: transform 0.3s ease;
-  color: #5D3A6A; /* dark pastel purple */
+  color: rgba(234,230,239,0.95);
 }
 
 section:hover {
@@ -276,12 +258,12 @@ footer {
 }
 
 #about-me, #skills {
-  background-color: #fff0db; /* light pastel peach */
+  background-color: rgba(18,14,20,0.45);
   padding: 20px;
   margin: 20px 0;
   border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-  color: #5D3A6A; /* dark pastel purple */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.35);
+  color: rgba(234,230,239,0.95);
 }
 
 #skills ul {
@@ -390,11 +372,11 @@ section h2::after {
 
 /* Card polish */
 .project-card {
-  background: linear-gradient(180deg, rgba(248,213,229,0.95), rgba(255,245,250,0.92));
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
   padding: 22px;
   margin: 12px 0;
   border-radius: 14px;
-  box-shadow: 0 10px 24px rgba(86,58,102,0.06);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.32);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .project-card:hover { transform: translateY(-6px); box-shadow: 0 18px 36px rgba(86,58,102,0.10); }
@@ -414,12 +396,12 @@ section h2::after {
 
 /* Timezone card on right column */
 .timezone-card {
-  background: linear-gradient(180deg, rgba(255,250,240,0.98), rgba(255,245,235,0.85));
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
   padding: 14px;
   margin: 18px 0;
   border-radius: 12px;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.06);
-  color: #5D3A6A;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.32);
+  color: rgba(234,230,239,0.95);
 }
 .timezone-card .tz-clock { font-size: 1.6em; font-weight:700; margin-top:6px; }
 .timezone-card .tz-location { font-weight:700; }
