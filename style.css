@@ -6,6 +6,65 @@ body {
   padding: 20px;
 }
 
+/* Navigation */
+.site-nav {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  z-index: 40;
+  backdrop-filter: blur(6px);
+}
+.site-nav .nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255,240,219,0.85);
+  padding: 8px 14px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+.site-nav .brand {
+  font-weight: 700;
+  color: #5D3A6A;
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  gap: 14px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-links a {
+  color: #5D3A6A;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+.nav-links a.active,
+.nav-links a:hover {
+  background: #f8d5e5;
+  color: #4B3B6B;
+}
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+}
+
+/* Hero */
+.hero {
+  margin-top: 80px; /* leave space for fixed nav */
+  text-align: center;
+  padding: 28px 16px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(255,240,219,0.9), rgba(255,245,235,0.6));
+  box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+}
+.hero-sub { color: #7A4988; margin-top: 6px; }
+
+
 header {
   text-align: center;
   padding-bottom: 20px;
@@ -32,13 +91,31 @@ header h1 {
   margin: 20px 0;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
   color: #4B3B6B; /* deep muted purple */
 }
 
 .project-card:hover {
-  transform: scale(1.03);
+  transform: scale(1.02) translateZ(0);
 }
+
+/* 3D tilt support */
+.project-card.tilt {
+  transform-style: preserve-3d;
+  will-change: transform;
+  perspective: 800px;
+}
+
+/* Responsive nav */
+@media (max-width: 720px) {
+  .nav-links { display: none; flex-direction: column; margin-top: 8px; }
+  .nav-links.open { display: flex; background: transparent; position: absolute; right: 14px; top: 46px; padding: 8px; border-radius: 8px; }
+  .nav-toggle { display: block; }
+  body { padding-top: 10px; }
+}
+
+/* small spacing fix so fixed nav doesn't cover content */
+main, section { scroll-margin-top: 96px; }
 
 
 section {
