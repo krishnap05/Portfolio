@@ -1,0 +1,142 @@
+
+body {
+  background-color: #ffe5b4; /* pastel peach */
+  font-family: 'Segoe UI', sans-serif;
+  color: #5D3A6A; 
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  padding-bottom: 20px;
+  background-color: #fff0db; /* lighter peach */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+header h1 {
+  font-size: 3em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #5D3A6A;
+}
+
+.subtitle {
+  font-size: 1.2em;
+  color: #7A4988; /* muted lavender */
+}
+
+.project-card {
+  background-color: #f8d5e5; /* soft coral pink */
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  color: #4B3B6B; /* deep muted purple */
+}
+
+.project-card:hover {
+  transform: scale(1.03);
+}
+
+
+section {
+  background-color: #fff0db; /* light peach */
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+  color: #5D3A6A; /* dark pastel purple */
+}
+
+section:hover {
+  transform: scale(1.01);
+}
+
+
+a {
+  color: #a3c4f3; /* powder blue */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  color: #7A4988; /* muted lavender */
+}
+
+footer {
+  text-align: center;
+  margin-top: 40px;
+  color: #7A4988; /* muted lavender */
+}
+
+#about-me, #skills {
+  background-color: #fff0db; /* light pastel peach */
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  color: #5D3A6A; /* dark pastel purple */
+}
+
+#skills ul {
+  list-style-type: square;
+  padding-left: 20px;
+}
+
+#skills li {
+  margin-bottom: 10px;
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#typed-name {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInName 2.8s ease-out forwards;
+  animation-delay: 0.7s;
+}
+
+@keyframes fadeInName {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+a {
+  color: #a3c4f3;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  color: #7A4988;
+}
