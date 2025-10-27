@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Fade-in animation on scroll
-  const sections = document.querySelectorAll("section");
+  // Fade-in animation on scroll for sections after the hero/home
+  const sections = document.querySelectorAll("section:not(#home):not(.hero-page)");
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }, {
-    threshold: 0.1
+    threshold: 0.12
   });
 
   sections.forEach(section => {

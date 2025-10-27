@@ -133,6 +133,17 @@ header, section, .project-card {
 .cta { display:inline-block; margin-top:8px; background:#4B3B6B; color:#fff; padding:10px 16px; border-radius:10px; text-decoration:none; font-weight:700; }
 .cta:hover { transform: translateY(-3px); }
 
+/* Full-screen hero/home section */
+.hero-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  text-align: center;
+}
+
 
 header {
   text-align: center;
