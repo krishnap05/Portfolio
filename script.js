@@ -66,10 +66,11 @@ document.addEventListener("DOMContentLoaded", () => {
       const cy = rect.height / 2;
       const dx = (x - cx) / cx;
       const dy = (y - cy) / cy;
-      const rotX = (dy * 6).toFixed(2);
-      const rotY = (dx * -6).toFixed(2);
-      card.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.02)`;
-      card.style.boxShadow = `${-rotY * 2}px ${rotX * 2}px 24px rgba(0,0,0,0.12)`;
+      // reduced tilt intensity for pastel, subtle effect
+      const rotX = (dy * 3).toFixed(2);
+      const rotY = (dx * -3).toFixed(2);
+      card.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.01)`;
+      card.style.boxShadow = `${-rotY * 1.2}px ${rotX * 1.2}px 18px rgba(0,0,0,0.08)`;
     });
     card.addEventListener('mouseleave', () => {
       card.style.transform = '';
