@@ -140,4 +140,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     setTimeout(step, 400);
   })();
+
+  // robot click -> scroll to contact
+  const robotEl = document.querySelector('.robot');
+  robotEl?.addEventListener('click', () => {
+    const contact = document.querySelector('#contact');
+    if (contact) contact.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
 });

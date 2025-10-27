@@ -290,8 +290,8 @@ a:hover {
 /* Split screen layout */
 .split-grid {
   display: grid;
-  grid-template-columns: 1fr 380px;
-  gap: 22px;
+  grid-template-columns: 60% 40%; /* slightly larger left column for About */
+  gap: 28px;
   align-items: start;
   margin-top: 20px;
   position: relative;
@@ -311,6 +311,47 @@ a:hover {
   font-weight: 700;
 }
 .projects-hero { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); margin-bottom: 18px; object-fit: cover; }
+
+/* Section headers */
+section h2 {
+  font-size: 1.6rem;
+  color: #4b365b;
+  position: relative;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+}
+section h2::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 64px;
+  height: 6px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, rgba(93,58,106,0.9), rgba(255,213,234,0.8));
+}
+
+/* Card polish */
+.project-card {
+  background: linear-gradient(180deg, rgba(248,213,229,0.95), rgba(255,245,250,0.92));
+  padding: 22px;
+  margin: 12px 0;
+  border-radius: 14px;
+  box-shadow: 0 10px 24px rgba(86,58,102,0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.project-card:hover { transform: translateY(-6px); box-shadow: 0 18px 36px rgba(86,58,102,0.10); }
+
+/* CTA subtle animation */
+.cta { transition: transform .18s ease, box-shadow .18s ease; }
+.cta:hover { box-shadow: 0 8px 20px rgba(75,59,107,0.12); transform: translateY(-4px); }
+
+/* Robot interaction */
+.robot { transition: transform .28s cubic-bezier(.22,.9,.28,1), box-shadow .28s ease; }
+.robot:hover { transform: translateY(-6px) rotate(-6deg) scale(1.02); box-shadow: 0 10px 30px rgba(75,59,107,0.08); }
+.robot:active { transform: translateY(-2px) rotate(-2deg) scale(0.99); }
+.robot .antenna circle { transition: r .18s ease, fill .18s ease; }
+.robot:hover .antenna circle { r:4; fill:#ffd5ea; }
 .btn.ghost { background: transparent; color: #5D3A6A; border: 2px solid rgba(93,58,106,0.08); }
 .btn:hover { transform: translateY(-2px); }
 
@@ -354,5 +395,10 @@ a:hover {
   .right-col { order: 2; }
   .left-col { order: 1; }
   .robot-wrapper { justify-content: flex-end; }
+}
+
+@media (min-width: 1400px) {
+  /* give a little more breathing room on large screens */
+  .split-grid { grid-template-columns: 62% 38%; gap: 40px; }
 }
 
