@@ -3,10 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Krishna Pandya</title>
+  <title>Krishna Pandya - Portfolio</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Particle Cursor Trail Canvas -->
+  <canvas id="particle-canvas"></canvas>
+  
   <nav class="site-nav">
     <div class="nav-inner">
       <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
@@ -51,7 +54,7 @@
     </svg>
 
   <h1><span class="hi">Hi,</span><span class="name">I'm  Krishna  Pandya.</span></h1>
-    <p class="hero-sub">Data analytics • Front-end Development • Dashboards</p>
+    <p class="hero-sub typing-effect" data-text="Data analytics • Front-end Development • Dashboards"></p>
 
   <p class="hero-intro reveal">Computer Science student passionate about data and design. Exploring analytics, engineering, and front-end development.</p>
 
@@ -106,12 +109,79 @@
       <div class="right-col">
         <section id="skills">
           <h2>Skills</h2>
-          <ul>
-            <li><strong>Programming & Tools:</strong> Python, SQL, Git, Streamlit</li>
-            <li><strong>Data Science & Analytics:</strong> Streamlit, XGBoost</li>
-            <li><strong>Web Development:</strong> HTML, CSS, JavaScript, React, Node.js</li>
-            <li><strong>Soft Skills:</strong> Problem-solving, communication, teamwork, adaptability</li>
-          </ul>
+          <div class="skills-grid">
+            <div class="skill-flip-card">
+              <div class="skill-flip-inner">
+                <div class="skill-flip-front">
+                  <div class="skill-icon">💻</div>
+                  <h3>Programming</h3>
+                </div>
+                <div class="skill-flip-back">
+                  <h4>Programming & Tools</h4>
+                  <ul class="skill-list">
+                    <li>Python</li>
+                    <li>SQL</li>
+                    <li>Git</li>
+                    <li>Streamlit</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            <div class="skill-flip-card">
+              <div class="skill-flip-inner">
+                <div class="skill-flip-front">
+                  <div class="skill-icon">📊</div>
+                  <h3>Data Science</h3>
+                </div>
+                <div class="skill-flip-back">
+                  <h4>Data Science & Analytics</h4>
+                  <ul class="skill-list">
+                    <li>Streamlit</li>
+                    <li>XGBoost</li>
+                    <li>Data Visualization</li>
+                    <li>Machine Learning</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            <div class="skill-flip-card">
+              <div class="skill-flip-inner">
+                <div class="skill-flip-front">
+                  <div class="skill-icon">🌐</div>
+                  <h3>Web Dev</h3>
+                </div>
+                <div class="skill-flip-back">
+                  <h4>Web Development</h4>
+                  <ul class="skill-list">
+                    <li>HTML & CSS</li>
+                    <li>JavaScript</li>
+                    <li>React</li>
+                    <li>Node.js</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            <div class="skill-flip-card">
+              <div class="skill-flip-inner">
+                <div class="skill-flip-front">
+                  <div class="skill-icon">🤝</div>
+                  <h3>Soft Skills</h3>
+                </div>
+                <div class="skill-flip-back">
+                  <h4>Professional Skills</h4>
+                  <ul class="skill-list">
+                    <li>Problem-solving</li>
+                    <li>Communication</li>
+                    <li>Teamwork</li>
+                    <li>Adaptability</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
       </div>
     </main>
@@ -152,33 +222,57 @@
       <div class="left-col">
         <section id="projects">
           <h2>My Projects</h2>
-          <div class="project-card">
-            <h3>Flashcard AI</h3>
-            <p>
-              A full-stack web application that transforms raw notes into interactive flashcards using Google Cloud's Vertex AI. Users paste in notes, and the app generates study-ready flashcards powered by Gemini 1.5 Pro models, perfect for quick review and active recall. Built with React, Node.js, Express, and integrated with Vertex AI for intelligent card generation. Currently adding PDF-to-flashcard conversion and enhanced UI/UX with smooth animations and transitions.
-            </p>
-            <div class="project-links">
-              <a class="btn ghost" href="https://github.com/krishnap05/flashcard-ai" target="_blank">GitHub Repo</a>
+          <div class="project-card flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="card-icon">🧠</div>
+                <h3>Flashcard AI</h3>
+              </div>
+              <div class="flip-card-back">
+                <h4>Flashcard AI</h4>
+                <p class="project-desc">
+                  A full-stack web application that transforms raw notes into interactive flashcards using Google Cloud's Vertex AI. Built with React, Node.js, Express, and Gemini 1.5 Pro models for intelligent card generation.
+                </p>
+                <div class="project-links">
+                  <a class="btn ghost" href="https://github.com/krishnap05/flashcard-ai" target="_blank">GitHub Repo</a>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="project-card">
-            <h3>Churn Prediction Dashboard</h3>
-            <p>
-              An interactive dashboard built with Streamlit and XGBoost to predict customer churn. This project leverages Python, Pandas, NumPy, Scikit-learn, XGBoost, and Streamlit for model training and deployment, with Matplotlib and Seaborn for visualization.
-            </p>
-            <div class="project-links">
-              <a class="btn" href="churn-project.html" target="_blank">Project Overview</a>
-              <a class="btn ghost" href="https://github.com/krishnap05/churn-prediction-dashboard" target="_blank">GitHub Repo</a>
+          <div class="project-card flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="card-icon">📊</div>
+                <h3>Churn Prediction Dashboard</h3>
+              </div>
+              <div class="flip-card-back">
+                <h4>Churn Dashboard</h4>
+                <p class="project-desc">
+                  An interactive dashboard for exploring customer churn patterns and generating predictions using machine learning models. Includes visualizations, feature breakdowns, and model performance metrics.
+                </p>
+                <div class="project-links">
+                  <a class="btn ghost" href="churn-project.html">View Dashboard</a>
+                  <a class="btn ghost" href="https://github.com/krishnap05/churn-prediction-dashboard" target="_blank">GitHub Repo</a>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="project-card">
-            <h3>Personal Portfolio Website</h3>
-            <p>
-              My personal portfolio site showcasing projects, skills, and contact info. Built as a lightweight static site with responsive layout, animated SVG background, and small JS interactions.
-            </p>
-            <div class="project-links">
-              <a class="btn" href="portfolio-project.html" target="_blank">Project Overview</a>
-              <a class="btn ghost" href="https://github.com/krishnap05/Portfolio" target="_blank">GitHub Repo</a>
+          <div class="project-card flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div class="card-icon">💼</div>
+                <h3>Portfolio Website</h3>
+              </div>
+              <div class="flip-card-back">
+                <h4>Portfolio Website</h4>
+                <p class="project-desc">
+                  A personal portfolio website built with HTML, CSS, and JavaScript to showcase projects and skills with modern animations and interactive features.
+                </p>
+                <div class="project-links">
+                  <a class="btn ghost" href="portfolio-project.html">About this Portfolio</a>
+                  <a class="btn ghost" href="https://github.com/krishnap05/Portfolio" target="_blank">GitHub Repo</a>
+                </div>
+              </div>
             </div>
           </div>
         </section>

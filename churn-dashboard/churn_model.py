@@ -1,16 +1,4 @@
-"""Churn model training, evaluation and SHAP explanation.
 
-This script loads the Telco Customer Churn dataset (CSV), preprocesses it,
-trains an XGBoost classifier, evaluates it, and produces a SHAP summary plot.
-
-Usage:
- - Put the dataset at data/WA_Fn-UseC_-Telco-Customer-Churn.csv (or pass a path)
- - Run: python churn_model.py
-
-Notes:
- - SHAP explanation runs after model training.
- - The script saves the trained model and a SHAP summary image.
-"""
 
 import os
 import sys

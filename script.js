@@ -234,4 +234,192 @@ document.addEventListener("DOMContentLoaded", () => {
       bg.style.transform = '';
     });
   })();
+
+  // ==========================================
+  // PARTICLE CURSOR TRAIL
+  // ==========================================
+  const canvas = document.getElementById('particle-canvas');
+  const ctx = canvas?.getContext('2d');
+  
+  if (canvas && ctx) {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    const particles = [];
+    const maxParticles = 50;
+    
+    class Particle {
+      constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.size = Math.random() * 3 + 1;
+        this.speedX = Math.random() * 3 - 1.5;
+        this.speedY = Math.random() * 3 - 1.5;
+        this.life = 100;
+      }
+      
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.life -= 2;
+        if (this.size > 0.3) this.size -= 0.05;
+      }
+      
+      draw() {
+        const theme = document.body.classList.contains('light-theme');
+        ctx.fillStyle = theme 
+          ? `rgba(217, 70, 166, ${this.life / 100})` 
+          : `rgba(255, 111, 182, ${this.life / 100})`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+    
+    window.addEventListener('mousemove', (e) => {
+      if (particles.length < maxParticles) {
+        particles.push(new Particle(e.clientX, e.clientY));
+      }
+    });
+    
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+    
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      for (let i = particles.length - 1; i >= 0; i--) {
+        particles[i].update();
+        particles[i].draw();
+        
+        if (particles[i].life <= 0) {
+          particles.splice(i, 1);
+        }
+      }
+      
+      requestAnimationFrame(animateParticles);
+    }
+    
+    animateParticles();
+  }
+
+  // ==========================================
+  // TYPING EFFECT
+  // ==========================================
+  const typingElement = document.querySelector('.typing-effect');
+  if (typingElement) {
+    const text = typingElement.dataset.text || typingElement.textContent;
+    typingElement.textContent = '';
+    let charIndex = 0;
+    
+    function typeChar() {
+      if (charIndex < text.length) {
+        typingElement.textContent += text.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeChar, 100);
+      } else {
+        // Remove cursor after typing is complete
+        setTimeout(() => {
+          typingElement.style.borderRight = 'none';
+        }, 1000);
+      }
+    }
+    
+    // Start typing after a short delay
+    setTimeout(typeChar, 1500);
+  }
+
+  // ==========================================
+  // FLIP CARD INTERACTION (Project Cards) - Click for mobile
+  // ==========================================
+  const flipCards = document.querySelectorAll('.flip-card');
+  flipCards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      // Don't flip if clicking a link
+      if (e.target.tagName === 'A' || e.target.closest('a')) return;
+      card.classList.toggle('flipped');
+    });
+  });
+
+  // SKILL FLIP CARDS - Click to flip on mobile
+  // ==========================================
+  const skillCards = document.querySelectorAll('.skill-flip-card');
+  skillCards.forEach(card => {
+    card.addEventListener('click', () => {
+      card.classList.toggle('skill-flipped');
+    });
+  });
+
+  // ==========================================
+  // RIPPLE EFFECT ON BUTTONS
+  // ==========================================
+  const buttons = document.querySelectorAll('.btn');
+  
+  buttons.forEach(button => {
+    button.addEventListener('click', function(e) {
+      const rect = this.getBoundingClientRect();
+      const ripple = document.createElement('span');
+      const size = Math.max(rect.width, rect.height);
+      const x = e.clientX - rect.left - size / 2;
+      const y = e.clientY - rect.top - size / 2;
+      
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = x + 'px';
+      ripple.style.top = y + 'px';
+      ripple.classList.add('ripple');
+      
+      this.appendChild(ripple);
+      
+      setTimeout(() => ripple.remove(), 600);
+    });
+  });
+
+  // ==========================================
+  // SCROLL PROGRESS INDICATOR
+  // ==========================================
+  const createScrollProgress = () => {
+    const progressBar = document.createElement('div');
+    progressBar.className = 'scroll-progress';
+    progressBar.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+      width: 0%;
+      z-index: 1000;
+      transition: width 0.1s ease;
+    `;
+    document.body.appendChild(progressBar);
+    
+    window.addEventListener('scroll', () => {
+      const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = (window.scrollY / windowHeight) * 100;
+      progressBar.style.width = scrolled + '%';
+    });
+  };
+  
+  createScrollProgress();
+
+  // ==========================================
+  // SMOOTH REVEAL ON SCROLL (Enhanced)
+  // ==========================================
+  const revealElements = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
+  
+  revealElements.forEach(el => {
+    revealObserver.observe(el);
+  });
 });
