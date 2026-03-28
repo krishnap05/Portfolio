@@ -36,7 +36,7 @@ const ProjectsPage = () => {
       title: 'Portfolio Website',
       shortDesc: "React & Vite Migrated SPA",
       desc: "A fully responsive, single-page application migrated to a React & Vite architecture. Features modular components, custom React hooks, interactive 3D card flips, animated SVG backgrounds, and dynamic routing to showcase my web development and data science projects.",
-      techStack: "React, Vite, Node.js, Modern CSS, JavaScript, SVGs",
+      techStack: "React, Vite, Modern CSS, JavaScript, SVGs",
       links: [
         { text: 'View on GitHub', url: 'https://github.com/krishnap05/Portfolio' }
       ],
