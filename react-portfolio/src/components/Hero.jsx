@@ -96,11 +96,6 @@ const Hero = () => {
           </div>
         </div>
 
-          <div className="hero-actions reveal">
-            <a href="#projects" className="action-btn outline-btn">
-              View My Work
-            </a>
-          </div>
       </div>
     </section>
   );
