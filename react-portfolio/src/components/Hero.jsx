@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import './Hero.css';
 
 const Hero = () => {
   useEffect(() => {
@@ -44,7 +43,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section id="home" className="hero hero-page hero-dark">
+    <section id="home" className="hero min-h-screen flex flex-col justify-center items-center px-[5%] py-[60px] relative bg-gradient-to-b from-[#0b0810] to-[#0f0b16] text-white overflow-hidden snap-start">
       {/* Animated SVG background shape */}
       <svg className="hero-bg" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
         <defs>
@@ -74,24 +73,24 @@ const Hero = () => {
         </g>
       </svg>
 
-      <div className="hero-content">
-        <h1 className="hero-heading">
-          <span className="hi">Hi, I'm Krishna,</span>
+      <div className="animate-float-in max-w-[900px] flex flex-col items-center justify-center text-center relative z-[5]">
+        <h1 className="mb-0 text-white -tracking-[0.6px]">
+          <span className="hi block text-[#ff6fb6] font-extrabold leading-[1.1] m-0 text-[clamp(3rem,7vw,5.5rem)] -tracking-[1px] max-[520px]:text-[clamp(2rem,8vw,3rem)]">Hi, I'm Krishna,</span>
         </h1>
 
-        <p className="hero-subheading reveal">
+        <p className="reveal text-[clamp(1.6rem,3.5vw,2.4rem)] font-medium text-white/60 mt-3 leading-[1.3] mb-0">
           passionate about... 
         </p>
 
-        <div className="hero-subtitle reveal">
-          <div className="word-roller">
+        <div className="reveal flex items-center justify-center gap-3 text-[clamp(1.8rem,4.5vw,3.8rem)] font-extrabold mt-1 mb-0.5 text-white">
+          <div className="h-[1.4em] overflow-hidden relative inline-block align-bottom">
             <div className="roll-text-container">
-              <span className="roll-text">building AI & LLM tools</span>
-              <span className="roll-text">modern web development</span>
-              <span className="roll-text">UI/UX design</span>
-              <span className="roll-text">data science</span>
-              <span className="roll-text">creating cool things</span>
-              <span className="roll-text" aria-hidden="true">building AI & LLM tools</span>
+              <span className="h-[1.4em] leading-[1.4em] m-0 p-0 flex items-center justify-center text-white font-extrabold -tracking-[1px] whitespace-nowrap">building AI & LLM tools</span>
+              <span className="h-[1.4em] leading-[1.4em] m-0 p-0 flex items-center justify-center text-white font-extrabold -tracking-[1px] whitespace-nowrap">modern web development</span>
+              <span className="h-[1.4em] leading-[1.4em] m-0 p-0 flex items-center justify-center text-white font-extrabold -tracking-[1px] whitespace-nowrap">UI/UX design</span>
+              <span className="h-[1.4em] leading-[1.4em] m-0 p-0 flex items-center justify-center text-white font-extrabold -tracking-[1px] whitespace-nowrap">data science</span>
+              <span className="h-[1.4em] leading-[1.4em] m-0 p-0 flex items-center justify-center text-white font-extrabold -tracking-[1px] whitespace-nowrap">creating cool things</span>
+              <span className="h-[1.4em] leading-[1.4em] m-0 p-0 flex items-center justify-center text-white font-extrabold -tracking-[1px] whitespace-nowrap" aria-hidden="true">building AI & LLM tools</span>
             </div>
           </div>
         </div>

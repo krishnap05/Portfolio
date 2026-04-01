@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './Navbar.css';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -51,21 +50,25 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="site-nav">
-      <div className="nav-inner right-aligned">
+    <nav className="fixed top-3 left-3 right-3 z-[100]">
+      <div className="flex items-center justify-end bg-[rgba(20,15,30,0.4)] px-6 py-2.5 border border-white/[0.08] rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.2)] backdrop-blur-[16px] transition-[border-color] duration-300 hover:border-white/15">
         <button 
-          className="nav-toggle" 
+          className="md:hidden bg-transparent border-none text-xl text-white cursor-pointer" 
           aria-label="Toggle navigation"
           onClick={toggleMenu}
         >
           ☰
         </button>
-        <ul className={`nav-links ${isOpen ? 'open' : ''}`}>
+        <ul className={`${isOpen ? 'flex' : 'hidden'} md:flex flex-col md:flex-row absolute md:relative top-[50px] md:top-auto right-2.5 md:right-auto bg-[rgba(11,8,16,0.95)] md:bg-transparent p-4 md:p-0 rounded-xl md:rounded-none shadow-[0_4px_12px_rgba(0,0,0,0.5)] md:shadow-none gap-2 list-none m-0`}>
           {navItems.map(({ href, label }) => (
             <li key={href}>
               <a 
                 href={href}
-                className={activeLink === href ? 'active' : ''}
+                className={`block px-4 py-2 rounded-[10px] no-underline font-medium transition-all duration-300 hover:bg-white/10 hover:text-white ${
+                  activeLink === href 
+                    ? 'bg-[rgba(255,127,182,0.15)] text-[#ff7fb6] shadow-[inset_0_0_10px_rgba(255,127,182,0.2)]' 
+                    : 'text-white/70'
+                }`}
                 onClick={(e) => {
                   e.preventDefault();
                   handleLinkClick(href);

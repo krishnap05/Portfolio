@@ -1,5 +1,4 @@
 import React from 'react';
-import './AboutPage.css';
 import { FaPython, FaHtml5, FaCss3Alt, FaReact, FaNodeJs } from 'react-icons/fa';
 import { IoLogoJavascript } from 'react-icons/io';
 import { SiTypescript, SiOpenai } from 'react-icons/si';
@@ -18,9 +17,9 @@ const AboutPage = () => {
   ];
 
   return (
-    <section id="about" className="details-page">
+    <section id="about" className="relative overflow-hidden min-h-screen py-[60px] px-5 snap-start">
       {/* Animated background */}
-      <svg className="hero-bg details-bg" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <svg className="hero-bg opacity-95" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
         <defs>
           <linearGradient id="g1a" x1="0" x2="1">
             <stop offset="0%" stopColor="#7b4dbb" stopOpacity="0.18" />
@@ -48,42 +47,42 @@ const AboutPage = () => {
         </g>
       </svg>
 
-      <main className="bento-container">
+      <main className="grid grid-cols-[55%_45%] gap-6 max-w-[1200px] mx-auto mt-5 relative z-[2] items-stretch max-[900px]:grid-cols-1">
         {/* Left Side - About Me Bio */}
-        <div className="bento-card bio-card reveal">
-          <div className="bio-content">
-            <h2>About Me</h2>
+        <div className="reveal bg-[rgba(20,20,35,0.45)] border border-white/[0.08] rounded-3xl p-9 backdrop-blur-[16px] shadow-[0_8px_32px_rgba(0,0,0,0.2)] transition-[transform,border-color,box-shadow] duration-300 hover:border-[rgba(255,111,182,0.6)] hover:shadow-[0_0_30px_rgba(255,111,182,0.3),inset_0_0_15px_rgba(255,111,182,0.1),0_8px_32px_rgba(0,0,0,0.4)] relative overflow-hidden">
+          <div>
+            <h2 className="text-white mt-0 mb-5 font-semibold -tracking-[0.5px] text-[2.2rem] max-[900px]:text-[1.8rem]">About Me</h2>
             
-            <p>Hey, I'm Krishna. I'm studying CS at Memorial University and spending most of my free time building stuff I find interesting, web apps, AI tools, data projects, sometimes all three at once.</p>
-            <p>I like that sweet spot where good design meets smart tech. I've been diving into modern web frameworks, experimenting with LLMs, and exploring how data can tell a story. Every project I work on teaches me something new and pushes me to think differently.</p>
-            <p>I'm still figuring things out but I'm always learning, always building, and always looking for the next interesting problem to solve."
+            <p className="leading-[1.7] text-white/75 mb-4 text-[1.05rem]">Hey, I'm Krishna. I'm studying CS at Memorial University and spending most of my free time building stuff I find interesting, web apps, AI tools, data projects, sometimes all three at once.</p>
+            <p className="leading-[1.7] text-white/75 mb-4 text-[1.05rem]">I like that sweet spot where good design meets smart tech. I've been diving into modern web frameworks, experimenting with LLMs, and exploring how data can tell a story. Every project I work on teaches me something new and pushes me to think differently.</p>
+            <p className="leading-[1.7] text-white/75 mb-0 text-[1.05rem]">I'm still figuring things out but I'm always learning, always building, and always looking for the next interesting problem to solve."
 </p>
           </div>
         </div>
 
         {/* Right Side - Tech Skills & Extras */}
-        <div className="right-bento-column">
+        <div className="flex flex-col gap-6">
           
-          <div className="bento-card skills-card reveal">
-            <h3 className="bento-title">Technical Skills</h3>
-            <div className="tech-skills-grid">
+          <div className="reveal bg-[rgba(20,20,35,0.45)] border border-white/[0.08] rounded-3xl p-9 backdrop-blur-[16px] shadow-[0_8px_32px_rgba(0,0,0,0.2)] transition-[transform,border-color,box-shadow] duration-300 hover:border-[rgba(255,111,182,0.6)] hover:shadow-[0_0_30px_rgba(255,111,182,0.3),inset_0_0_15px_rgba(255,111,182,0.1),0_8px_32px_rgba(0,0,0,0.4)] relative overflow-hidden">
+            <h3 className="text-white mt-0 mb-5 font-semibold -tracking-[0.5px] text-2xl">Technical Skills</h3>
+            <div className="grid grid-cols-[repeat(auto-fill,minmax(85px,1fr))] gap-4">
               {techSkills.map((skill, index) => (
-                <div key={index} className="tech-logo-container">
-                  <div className="tech-icon">{skill.icon}</div>
-                  <span className="tech-name">{skill.name}</span>
+                <div key={index} className="group bg-black/20 border border-white/5 rounded-2xl py-5 px-2.5 flex flex-col items-center justify-center gap-3 backdrop-blur-[8px] transition-all duration-300 cursor-default hover:bg-white/[0.04] hover:border-[rgba(255,111,182,0.6)] hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(255,111,182,0.25),inset_0_0_10px_rgba(255,111,182,0.1)]">
+                  <div className="text-[2.5rem] flex items-center justify-center drop-shadow-[0_2px_8px_rgba(255,255,255,0.1)] transition-[transform,filter] duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_4px_12px_rgba(255,255,255,0.2)]">{skill.icon}</div>
+                  <span className="text-xs text-white/60 font-medium tracking-[0.5px]">{skill.name}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="bento-card location-card reveal delay-1">
-            <div className="location-content">
-              <h3 className="bento-title">Current Focus</h3>
-              <p>Expanding my knowledge in <strong>Modern Web Frameworks</strong> and <strong>Machine Learning</strong> while pursuing my CS Degree.</p>
-              <div className="focus-badges">
-                <span className="badge">Web Dev</span>
-                <span className="badge">Data Science</span>
-                <span className="badge">AI/LLMs</span>
+          <div className="reveal bg-gradient-to-br from-[rgba(20,20,35,0.65)] to-[rgba(45,25,65,0.4)] border border-white/[0.08] rounded-3xl p-9 backdrop-blur-[16px] shadow-[0_8px_32px_rgba(0,0,0,0.2)] transition-[transform,border-color,box-shadow] duration-300 hover:border-[rgba(255,111,182,0.6)] hover:shadow-[0_0_30px_rgba(255,111,182,0.3),inset_0_0_15px_rgba(255,111,182,0.1),0_8px_32px_rgba(0,0,0,0.4)] relative overflow-hidden flex-grow flex flex-col justify-center">
+            <div>
+              <h3 className="text-white mt-0 mb-5 font-semibold -tracking-[0.5px] text-2xl">Current Focus</h3>
+              <p className="leading-[1.7] text-white/75 mb-4 text-[1.05rem]">Expanding my knowledge in <strong>Modern Web Frameworks</strong> and <strong>Machine Learning</strong> while pursuing my CS Degree.</p>
+              <div className="flex flex-wrap gap-2.5 mt-5">
+                <span className="bg-white/[0.08] border border-white/10 px-3.5 py-1.5 rounded-[20px] text-sm text-[#ff6fb6] font-medium tracking-[0.5px]">Web Dev</span>
+                <span className="bg-white/[0.08] border border-white/10 px-3.5 py-1.5 rounded-[20px] text-sm text-[#ff6fb6] font-medium tracking-[0.5px]">Data Science</span>
+                <span className="bg-white/[0.08] border border-white/10 px-3.5 py-1.5 rounded-[20px] text-sm text-[#ff6fb6] font-medium tracking-[0.5px]">AI/LLMs</span>
               </div>
             </div>
           </div>

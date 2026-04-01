@@ -1,39 +1,19 @@
-html, body {
-  height: 100%;
+@import "tailwindcss";
+
+/* ── Base ── */
+@layer base {
+  html, body { height: 100%; }
+  body {
+    background-color: #0b0810;
+    font-family: 'Segoe UI', sans-serif;
+    color: rgba(234,230,239,0.95);
+    scroll-snap-type: y mandatory;
+    overflow-y: auto;
+  }
+  section { scroll-snap-align: start; }
 }
 
-body {
-  background-color: #0b0810;
-  font-family: 'Segoe UI', sans-serif;
-  color: rgba(234,230,239,0.95);
-  margin: 0;
-  scroll-snap-type: y mandatory;
-  overflow-y: auto;
-}
-
-section, .hero-page {
-  scroll-snap-align: start;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-
-:root {
-  --bg-card: rgba(255,255,255,0.03);
-  --shadow: rgba(0,0,0,0.3);
-  --text-primary: #fff;
-  --text-secondary: rgba(234,230,239,0.8);
-  --accent-primary: #ff6fb6;
-  --accent-secondary: #d25aa8;
-  --accent-tertiary: #7b4dbb;
-  --btn-bg: #8a69a8;
-  --border-light: rgba(255,255,255,0.1);
-}
-
-
-/* Scroll reveals */
+/* ── Scroll reveal (toggled by IntersectionObserver) ── */
 .reveal {
   opacity: 0;
   transform: translateY(20px);
@@ -42,5 +22,145 @@ section, .hero-page {
 .reveal.show {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* ── Character-by-character reveal ── */
+.char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(18px) scaleY(0.995);
+  will-change: transform, opacity;
+}
+.char.animate {
+  animation: charIn 520ms cubic-bezier(.2,.9,.23,1) forwards;
+}
+@keyframes charIn {
+  0%   { opacity: 0; transform: translateY(18px) scaleY(0.995); }
+  60%  { opacity: 1; transform: translateY(-4px) scaleY(1.01); }
+  100% { opacity: 1; transform: translateY(0) scaleY(1); }
+}
+
+/* ── Hero SVG background ── */
+.hero-bg {
+  position: absolute; inset: 0; width: 120%; height: 120%;
+  transform-origin: center; z-index: 0; pointer-events: none;
+  animation: heroFloat 8s ease-in-out infinite;
+}
+.hero-path {
+  stroke-linecap: round; opacity: 0.9;
+  stroke-dasharray: 600; stroke-dashoffset: 0;
+  animation: strokeMove 10s linear infinite;
+  stroke-width: 1.1; transform-origin: center;
+}
+.hero-path:nth-of-type(odd)  { animation-duration: 8s; opacity: 0.85; }
+.hero-path:nth-of-type(even) { animation-duration: 11s; opacity: 0.7; }
+.hero-path:nth-of-type(3n)   { stroke-width: 1.4; }
+.hero-path:nth-of-type(5n)   { stroke-width: 0.9; }
+.hero-path:nth-of-type(1)  { transform: translateY(0px); }
+.hero-path:nth-of-type(2)  { transform: translateY(4px); }
+.hero-path:nth-of-type(3)  { transform: translateY(8px); }
+.hero-path:nth-of-type(4)  { transform: translateY(12px); }
+.hero-path:nth-of-type(5)  { transform: translateY(16px); }
+.hero-path:nth-of-type(6)  { transform: translateY(20px); }
+.hero-path:nth-of-type(7)  { transform: translateY(24px); }
+.hero-path:nth-of-type(8)  { transform: translateY(28px); }
+.hero-path:nth-of-type(9)  { transform: translateY(32px); }
+.hero-path:nth-of-type(10) { transform: translateY(36px); }
+.hero-path:nth-of-type(11) { transform: translateY(40px); }
+.hero-path:nth-of-type(12) { transform: translateY(44px); }
+.hero-path:nth-of-type(13) { transform: translateY(48px); }
+.hero-path:nth-of-type(14) { transform: translateY(52px); }
+.hero-path:nth-of-type(15) { transform: translateY(56px); }
+.hero-path:nth-of-type(16) { transform: translateY(60px); }
+
+@keyframes heroFloat {
+  0%   { transform: translateX(0) translateY(0) rotate(0deg); }
+  50%  { transform: translateX(-18px) translateY(-6px) rotate(-2deg); }
+  100% { transform: translateX(0) translateY(0) rotate(0deg); }
+}
+@keyframes strokeMove { to { stroke-dashoffset: -800; } }
+@keyframes floatIn {
+  from { opacity: 0; transform: translateY(30px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes chevronBob {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(6px); }
+  100% { transform: translateY(0); }
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes popUp {
+  from { opacity: 0; transform: translateY(20px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes rollUp {
+  0%, 12%   { transform: translateY(0); }
+  20%, 32%  { transform: translateY(-16.66%); }
+  40%, 52%  { transform: translateY(-33.33%); }
+  60%, 72%  { transform: translateY(-50%); }
+  80%, 92%  { transform: translateY(-66.66%); }
+  100%      { transform: translateY(-83.33%); }
+}
+
+/* ── Roll-up text ── */
+.roll-text-container {
+  display: flex; flex-direction: column;
+  margin: 0; padding: 0;
+  animation: rollUp 12s cubic-bezier(0.5, 0, 0.3, 1) infinite;
+}
+
+/* ── Accordion ── */
+.accordion-content {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+.accordion-item.active .accordion-content {
+  max-height: 300px; padding-bottom: 20px; opacity: 1;
+}
+
+/* ── Gallery card flex transition ── */
+.gallery-card-transition {
+  transition: flex 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.3s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* ── Glitch text ── */
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%; opacity: 0.8;
+}
+.glitch-text::before {
+  left: 2px; text-shadow: -2px 0 #ff7fb6;
+  clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+  animation: glitchAnim1 5s infinite linear alternate-reverse;
+}
+.glitch-text::after {
+  left: -2px; text-shadow: -2px 0 #fff;
+  clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+  animation: glitchAnim2 5s infinite linear alternate-reverse;
+}
+@keyframes glitchAnim1 {
+  0%, 80% { clip-path: polygon(0 0, 0 0, 0 0, 0 0); transform: translate(0); }
+  85%     { clip-path: polygon(0 15%, 100% 15%, 100% 30%, 0 30%); transform: translate(-3px, 2px); }
+  90%     { clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%); transform: translate(3px, -2px); }
+  95%     { clip-path: polygon(0 30%, 100% 30%, 100% 50%, 0 50%); transform: translate(-3px, 0); }
+  100%    { clip-path: polygon(0 5%, 100% 5%, 100% 25%, 0 25%); transform: translate(3px, 2px); }
+}
+@keyframes glitchAnim2 {
+  0%, 80% { clip-path: polygon(0 0, 0 0, 0 0, 0 0); transform: translate(0); }
+  82%     { clip-path: polygon(0 75%, 100% 75%, 100% 90%, 0 90%); transform: translate(3px, -2px); }
+  88%     { clip-path: polygon(0 40%, 100% 40%, 100% 60%, 0 60%); transform: translate(-3px, 2px); }
+  96%     { clip-path: polygon(0 15%, 100% 15%, 100% 35%, 0 35%); transform: translate(3px, 0); }
+  100%    { clip-path: polygon(0 80%, 100% 80%, 100% 100%, 0 100%); transform: translate(-3px, 2px); }
+}
+
+/* ── Custom animation utilities ── */
+@layer utilities {
+  .animate-float-in { animation: floatIn 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+  .animate-chevron-bob { animation: chevronBob 1.6s infinite ease-in-out; }
+  .animate-fade-in { animation: fadeIn 0.3s ease forwards; }
+  .animate-pop-up { animation: popUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 }
 

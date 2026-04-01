@@ -1,11 +1,10 @@
 import React from 'react';
 import { FiMail, FiGithub, FiLinkedin } from 'react-icons/fi';
-import './ContactPage.css';
 
 const ContactPage = () => {
   return (
-    <section id="contact" className="details-page centered-contact-section">
-      <svg className="hero-bg details-bg" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <section id="contact" className="relative overflow-hidden min-h-screen py-[60px] px-5 snap-start flex items-center justify-center">
+      <svg className="hero-bg opacity-95" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
         <defs>
           <linearGradient id="g1c" x1="0" x2="1">
             <stop offset="0%" stopColor="#7b4dbb" stopOpacity="0.18" />
@@ -25,14 +24,14 @@ const ContactPage = () => {
         </g>
       </svg>
 
-      <div className="contact-content">
-        <h2 className="glitch-text" data-text="Let's Connect">Let's Connect</h2>
-        <p className="contact-subtitle">Feel free to reach out</p>
+      <div className="relative z-10 flex flex-col items-center text-center gap-6">
+        <h2 className="glitch-text text-[clamp(3rem,8vw,5rem)] font-extrabold relative text-[#ff6fb6] m-0 tracking-[2px] leading-[1.1]" data-text="Let's Connect">Let's Connect</h2>
+        <p className="text-lg text-white/70 m-0 mb-4 font-normal tracking-[0.5px]">Feel free to reach out</p>
         
-        <div className="contact-links-row">
+        <div className="flex gap-6 justify-center items-center">
           <a 
             href="mailto:krishnapandya510@gmail.com" 
-            className="contact-icon-btn"
+            className="flex items-center justify-center w-[60px] h-[60px] rounded-full border-[1.5px] border-[rgba(255,127,182,0.3)] bg-[rgba(20,15,30,0.4)] text-white text-2xl transition-all duration-300 backdrop-blur-[8px] no-underline hover:border-[#ff7fb6] hover:text-[#ff7fb6] hover:shadow-[0_0_20px_rgba(255,127,182,0.4),inset_0_0_10px_rgba(255,127,182,0.2)] hover:-translate-y-1"
             aria-label="Email"
           >
             <FiMail />
@@ -41,7 +40,7 @@ const ContactPage = () => {
             href="https://github.com/krishnap05" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="contact-icon-btn"
+            className="flex items-center justify-center w-[60px] h-[60px] rounded-full border-[1.5px] border-[rgba(255,127,182,0.3)] bg-[rgba(20,15,30,0.4)] text-white text-2xl transition-all duration-300 backdrop-blur-[8px] no-underline hover:border-[#ff7fb6] hover:text-[#ff7fb6] hover:shadow-[0_0_20px_rgba(255,127,182,0.4),inset_0_0_10px_rgba(255,127,182,0.2)] hover:-translate-y-1"
             aria-label="GitHub"
           >
             <FiGithub />
@@ -50,7 +49,7 @@ const ContactPage = () => {
             href="https://www.linkedin.com/in/krishna-pandya-a97839270/" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="contact-icon-btn"
+            className="flex items-center justify-center w-[60px] h-[60px] rounded-full border-[1.5px] border-[rgba(255,127,182,0.3)] bg-[rgba(20,15,30,0.4)] text-white text-2xl transition-all duration-300 backdrop-blur-[8px] no-underline hover:border-[#ff7fb6] hover:text-[#ff7fb6] hover:shadow-[0_0_20px_rgba(255,127,182,0.4),inset_0_0_10px_rgba(255,127,182,0.2)] hover:-translate-y-1"
             aria-label="LinkedIn"
           >
             <FiLinkedin />

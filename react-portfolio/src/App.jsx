@@ -5,7 +5,6 @@ import AboutPage from './components/AboutPage';
 import ProjectsPage from './components/ProjectsPage';
 import ContactPage from './components/ContactPage';
 import ParticleCanvas from './components/ParticleCanvas';
-import './App.css';
 
 function App() {
   useEffect(() => {
