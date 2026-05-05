@@ -10,19 +10,43 @@ const ProjectsPage = () => {
   const projects = [
     {
       id: 0,
+      title: 'NASA Data Explorer',
+      shortDesc: "An interactive scientific data explorer that pulls real atmospheric data from NASA's POWER satellite API, visualizes temperature, humidity, and solar radiation trends using Plotly, and automatically detects anomalies in the data using the Isolation Forest machine learning algorithm.",
+        desc: [
+          "Scientific Data Explorer is a Python-based interactive dashboard that ingests real atmospheric data directly from NASA's POWER satellite API.",
+          "The application visualizes key environmental parameters including temperature, humidity, and solar radiation trends across any location on Earth using interactive Plotly charts.",
+          "Built with Streamlit, the dashboard features automated anomaly detection powered by the Isolation Forest machine learning algorithm from Scikit-learn, which flags statistically unusual data points directly on the charts.",
+          "Users can explore any city worldwide, adjust date ranges, and control anomaly detection sensitivity through an intuitive sidebar interface. The project demonstrates end to end data engineering skills including API integration, data processing with Pandas, interactive visualization, and unsupervised machine learning."
+        ],
+      techStack: "Python, Streamlit, Plotly, Scikit-learn, Pandas, NASA POWER API",
+      links: [{ text: 'View on GitHub', url: 'https://github.com/krishnap05/NASA-data-explorer' }],
+      gradient: 'linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%)',
+      pattern: 'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 2px, transparent 2px)'
+    },
+    {
+      id: 1,
       title: 'Flashcard AI',
       shortDesc: "Vertex AI Flashcard Generator",
-      desc: "Built full-stack web application that transforms raw notes, PDFs, Word documents, and various file types into intelligent flashcards using AI models; designed backend services to process data and integrate with Google Cloud Vertex AI; implemented Gemini 1.5 Pro for automated, context-aware flashcard generation; currently enhancing the platform by adding saved document chat history, improved UI/UX design, and advanced learning features.",
+        desc: [
+          "Built full-stack web application that transforms raw notes, PDFs, Word documents, and various file types into intelligent flashcards using AI models.",
+          "Designed backend services to process data and integrate with Google Cloud Vertex AI.",
+          "Implemented Gemini 1.5 Pro for automated, context-aware flashcard generation.",
+          "Currently enhancing the platform by adding saved document chat history, improved UI/UX design, and advanced learning features."
+        ],
       techStack: "React, Node.js, Express, Google Cloud Vertex AI, Gemini 1.5 Pro",
       links: [{ text: 'View on GitHub', url: 'https://github.com/krishnap05/flashcard-ai' }],
       gradient: 'linear-gradient(135deg, #1f1c2c 0%, #928DAB 100%)',
       pattern: 'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 2px, transparent 2px)'
     },
     {
-      id: 1,
+      id: 2,
       title: 'Churn Prediction Dashboard',
       shortDesc: "ML Dashboard for Customer Churn",
-      desc: "An interactive dashboard for exploring customer churn patterns and generating predictions using machine learning models. Includes visualizations, feature breakdowns, and model performance metrics. Helps businesses identify at-risk customers proactively.",
+        desc: [
+          "An interactive dashboard for exploring customer churn patterns and generating predictions using machine learning models.",
+          "Includes visualizations, feature breakdowns, and model performance metrics.",
+          "Helps businesses identify at-risk customers proactively."
+        ],
       techStack: "Python, Streamlit, XGBoost, Scikit-Learn, Pandas, Plotly",
       links: [
         { text: 'View on GitHub', url: 'https://github.com/krishnap05/churn-prediction-dashboard' }
@@ -31,10 +55,14 @@ const ProjectsPage = () => {
       pattern: 'linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.05) 75%, rgba(255,255,255,0.05))'
     },
     {
-      id: 2,
+      id: 3,
       title: 'Portfolio Website',
       shortDesc: "React & Vite Migrated SPA",
-      desc: "A fully responsive, single-page application migrated to a React & Vite architecture. Features modular components, custom React hooks, interactive 3D card flips, animated SVG backgrounds, and dynamic routing to showcase my web development and data science projects.",
+        desc: [
+          "A fully responsive, single-page application migrated to a React & Vite architecture.",
+          "Features modular components, custom React hooks, interactive 3D card flips, animated SVG backgrounds, and dynamic routing.",
+          "Showcases my web development and data science projects."
+        ],
       techStack: "React, Vite, Modern CSS, JavaScript, SVGs",
       links: [
         { text: 'View on GitHub', url: 'https://github.com/krishnap05/Portfolio' }
